@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Budget Tracker</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<link rel="icon" href="img/logo.png" type="x-icon">
+</head>
+<body>
+
+
+    <div class="form-container">
+        <div class="form">
+            <h2>Welcome To My Budget Tracker</h2>
+            <div>
+               <span>
+                <p>Name</p>
+                <input type="text" class="name-input">
+            </span> 
+            <span>
+                <p>Password</p>
+                <input type="text" class="password-input">
+            </span> 
+            </div>
+            <div>
+                <span>
+                    <p>Email</p>
+                    <input type="email" class="email-input">
+                </span> 
+                <span>
+                 <p>Monthly Income</p>
+                 <input type="number" min="0" class="monthly-input">
+             </span> 
+              
+             </div>
+             <div>
+                <span>
+                 <p>Utilities Price</p>
+                 <input type="number" min="0" class="utilities-input">
+             </span> 
+             <span>
+                <p>Rent/Mortgauge</p>
+                <input type="number" min="0" class="rent-input">
+            </span>  
+             </div>
+             <div>
+                <span>
+                 <p>Occupation</p>
+                 <input type="text" class="occupation-input">
+             </span> 
+             <span>
+                <p>Country</p>
+                <input type="text" class="country-input">
+            </span>  
+             </div>
+
+             <div>
+                <span>
+                    <p>Last Transaction</p>
+                    <input type="text" class="addNew-name">
+                </span>
+                <span>
+                    <p>Amount Spent</p>
+                    <input type="number" min="0" class="addNew-amount">
+                </span>
+                </div>
+
+             <button onclick="createBudget()" class="proceed">Proceed</button>
+            
+        </div>
+    </div>
+    <div class="container">
+       <div class="side-bar">
+        <span id="close-side-bar">
+            <i class="fa-solid fa-xmark"></i>
+        </span>
+        
+        <span>Wallett</span>
+        <img src="img/profile picture.png" draggable="false" alt="user">
+        <h2 class="name"></h2>
+        <p class="occupation">Web Developer</p>
+        <a  class="side-opt" href="">
+            <i class="fa-solid fa-chart-line"></i>
+            Dashboard
+        </a>
+        <a href="" class="side-opt">
+            <i class="fa-solid fa-wallet"></i>
+            My Wallet
+        </a>
+        <a href="" class="side-opt">
+            <i class="fa-solid fa-money-bill-transfer"></i>
+            Transaction
+        </a>
+        <a href="" class="side-opt">
+                <i class="fa-solid fa-gear"></i>
+            Settings
+        </a>
+        <div class="history">
+            <div>
+                <i class="fa-solid fa-clock-rotate-left"></i>
+                <i id="history-options" class="fa-solid fa-ellipsis-vertical"></i>
+                <button class="remove-history">Remove</button>
+            </div>
+            <h2>History available</h2>
+            <p>From now on everything you do on this budget tracker will be saved</p>
+        </div>
+        </div>
+        <div class="collap-side-bar">
+            <span class="collap-side-button"><i class="fa-solid fa-bars"></i></span>
+            <div class="top-bar-icons">
+                <span><i class="fa-regular fa-bell"></i></span>
+                <span><i class="fa-regular fa-comment"></i></span>
+                <span><i class="fa-solid fa-gift"></i></span>
+                <span><i class="fa-solid fa-gear"></i></span>
+            </div>
+        </div>
+        <div class="main-div">
+            <div class="top-bar">
+                <span id="bell"><i class="fa-regular fa-bell"></i></span>
+                <span><i class="fa-regular fa-comment"></i></span>
+                <span><i class="fa-solid fa-gift"></i></span>
+                <span><a href="settings.html"><i class="fa-solid fa-gear"></i></a></span>
+            </div>
+            <div class="big-divs">
+             <div class="big-div active">
+                
+                    <span class="div-name">Dashboard</span>
+
+                    <span class="big-div-menu">
+                        <i class="fa-solid fa-bars"></i>
+                    </span>
+                <div>
+
+                
+                <div class="box">
+                    <span class="change">Change</span>
+                    <a id="opt">
+                        <i class="fa-solid fa-ellipsis-vertical"></i>  
+                     </a>
+                    <h2>Monthly Income</h2>
+                    <span>
+                        $
+                        <input type="text" class="income" value="3000" readonly>
+                    </span>
+                    
+                    <h4>0% this month</h4>
+                </div>
+                <div class="box">
+                    <span class="change">Change</span>
+                    <a id="opt">
+                        <i class="fa-solid fa-ellipsis-vertical"></i>  
+                     </a>
+                    <h2>Rent/Mortgauge</h2>
+                    <span>
+                        $
+                        <input type="text" class="rent-inpt" value="3000" readonly>
+                    </span>
+                    <h4>0% this month</h4>
+                </div>
+
+
+
+
+                <div class="box utilities">
+                    <span class="change">Change</span>
+                    <a id="opt">
+                       <i class="fa-solid fa-ellipsis-vertical"></i>  
+                    </a>
+                   
+                    <h2>Utilities</h2>
+                    <span>
+                        $
+                        <input type="text" class="utilities-inpt" value="3000" readonly>
+                    </span>
+                    <h4>0% this month</h4>
+                </div>
+            </div>
+
+                <div class="chart">
+                    <h2>
+                        Budget Overview
+                    </h2>
+                    <canvas id="myChart"></canvas>
+                </div>
+
+                <div class="recent-activity">
+                    <h2>Recent Activities</h2>
+                    <div class="activity-box">
+                        
+                    </div>
+                    
+
+                </div>
+        
+                
+
+                
+
+                
+            </div>
+
+
+
+            <div class="big-div">
+                <span class="div-name">My Wallet</span>
+
+                <span class="big-div-menu">
+                    <i class="fa-solid fa-bars"></i>
+                </span>
+                <div class="left-side">
+                    <div class="wallet-summary">
+                    <div class="wallet-box">
+                        <div>
+                            <span>
+                                <i class="fa-solid fa-money-bill-trend-up"></i>
+                            </span>
+                            <p>Income</p>
+                        </div>
+                        <p class="wallet-amount">
+                            +$0000
+                        </p>
+                    </div>
+                    <div class="wallet-box">
+                        <div>
+                            <span>
+                                <i class="fa-solid fa-money-bill-trend-up"></i>
+                            </span>
+                            <p>Outcome</p>
+                        </div>
+                        <p class="wallet-outcome">
+                            <span class="wallet-outcome2">
+                                $0000
+                            </span>
+                        </p>
+                    </div>
+                </div> 
+
+                <div class="transaction-history">
+                    <h2>Transaction History</h2>
+                    <div class="history-transaction">
+                        <p>Type</p>
+                        <p>Amount</p>
+                        <p>Asset</p>
+                        <p>Date</p>
+                    </div>
+
+                    <div class="history-boxes">
+
+                    
+                    
+                </div>
+
+
+
+                </div>
+                </div>
+               
+                <div class="right-side">
+                    <div class="send">
+                        <div>
+                            <span><i class="fa-solid fa-scale-balanced"></i></span>
+                            <h2>Your Balance</h2>
+                        </div>
+                        
+                        <p class="budget-remaining">
+                            $0000
+                        </p>
+                </div>
+                <div class="latest-transactions">
+                    <h2>Latest Transactions</h2>
+                    <div class="transaction-boxes-latest">
+                     
+                    </div>
+                    
+                </div>
+                <div class="transfer">
+                    <h2>Quick Transfer</h2>
+                    <div>
+                        <span class="transfer-person">
+                          <img src="img/person1.png" alt="">  
+                          <p class="person-name">Rachel</p>
+                        </span>
+                        
+                        <span class="transfer-person">
+                            <img src="img/person2.png" alt="">  
+                            <p class="person-name">Sofia</p>
+                          </span>
+                          <span class="transfer-person">
+                            <img src="img/person3.png" alt="">  
+                            <p class="person-name">Gabriel</p>
+                          </span>
+                          <span class="transfer-person">
+                            <img src="img/person4.png" alt="">  
+                            <p class="person-name">Sonya</p>
+                          </span>
+                          <span class="transfer-person">
+                            <img src="img/person5.png" alt="">  
+                            <p class="person-name">Katie</p>
+                          </span>
+                    </div>
+                </div>
+                </div>
+                
+
+
+            </div>
+            <div class="big-div">
+                <span id="transactions-name" class="div-name">Transactions</span>
+                <span class="big-div-menu">
+                    <i class="fa-solid fa-bars"></i>
+                </span>
+                <button class="add-new">
+                    <i class="fa-solid fa-circle-plus"></i>Add New
+                </button>
+                <div class="make-payment">
+                    <h2>Make a Payment</h2>
+                    <div>
+                        <span>
+                            <img src="img/paypal-logo.png" alt="">
+                        </span>
+                        <span>
+                            <img src="img/bitcoin-logo.png" alt="">
+                        </span>
+                        <span>
+                            <img src="img/google-pay-logo.png" alt="">
+                        </span>
+
+                        <span>
+                            <img src="img/amazonPay-logo.png" alt="">
+                        </span>
+                        <span>
+                            <img src="img/skrill-logo.png" alt="">
+                        </span>
+                    </div>
+                </div>
+                <div class="transactions">
+                    <h2>All Your Transactions</h2>
+                    <div class="pre-set">
+                        <p>Date</p>
+                        <p>Time</p>
+                        <p>Transaction ID</p>
+                        <p>Name</p>
+                        <p>Amount</p>
+                        <p>Status</p>
+                    </div>
+                    <div class="transaction-boxes">
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+
+
+            <div class="big-div">
+                <span class="div-name">Settings</span>
+                <span class="big-div-menu">
+                    <i class="fa-solid fa-bars"></i>
+                </span>
+                <div class="personal-info">
+                    <h2>Personal Info</h2>
+                    <div class="pers-info">
+                        <div>
+                            <span>
+                                <i class="fa-solid fa-user"></i>
+                                Login
+                            </span>
+                            <p class="username">User</p>
+                        </div>
+                        <div>
+                            <span>
+                                <i class="fa-solid fa-cloud"></i>
+                                Refereer
+                            </span>
+                            <p>My_Refeer</p>
+                        </div>
+                    </div>
+                    <div class="pers-info">
+                        <div>
+                            <span>
+                                <i class="fa-solid fa-envelope"></i>
+                                Email
+                            </span>
+                            <p class="email"></p>
+                        </div>
+                        <div>
+                            <span>
+                                <i class="fa-solid fa-phone"></i>
+                                Phone
+                            </span>
+                            <p>No phone number added</p>
+                        </div>
+                    </div>
+                    <div class="pers-info">
+                        <div>
+                            <span>
+                                <i class="fa-solid fa-earth-americas"></i>
+                                Country
+                            </span>
+                            <p class="country-text">America</p>
+                        </div>
+                        <div>
+                            <span>
+                                <i class="fa-brands fa-telegram"></i>
+                                Telegram
+                            </span>
+                            <p>No telegram ID added</p>
+                        </div>  
+                    </div>
+                </div>
+                <div class="security">
+                    <h2>Security</h2>
+                    <div class="security-boxes">
+                        <div class="security-box">
+                           <span>
+                            <i class="fa-solid fa-key"></i>
+                            Current Password
+                        </span>
+                        <div>
+                            <input type="password" placeholder="Enter a password" class="password" readonly>
+                            <span class="password-icon"><i class="fa-solid fa-lock"></i></span>
+                        </div>
+                         
+                        </div>
+
+                        <div class="security-box">
+                            <span>
+                             <i class="fa-solid fa-key"></i>
+                             New Password
+                         </span>
+                         <div>
+                             <input type="text" placeholder="Enter a new password" class="new-password">
+                            
+                         </div>
+                          
+                         </div>
+                        
+                    </div>
+                </div>
+            </div>     
+
+
+            </div>
+            
+
+        </div>
+
+    </div>
+    
+
+    <div class="add-new-container">
+        <div class="addNew-div">
+            <h2>Add a new Spending</h2>
+            <i id="closeNewDiv" class="fa-solid fa-xmark"></i>
+            <div>
+                <span>
+                    <p>Name</p>
+                    <input type="text" class="addNew-name2">
+                </span>
+                <span>
+                    <p>Amount Spent</p>
+                    <input type="number" min="0" class="addNew-amount2">
+                </span>
+                </div>
+                <button class="addNew-btn">
+                    Add New
+                </button>
+            
+        </div>
+    </div>
+    
+
+      
+    <script src="https://kit.fontawesome.com/17d8cf32ce.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
